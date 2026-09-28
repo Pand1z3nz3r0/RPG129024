@@ -1,0 +1,32 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation libs.junit.jupiter
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+javafx {
+    version = '25.0.4'
+    modules = [ 'javafx.controls' ]
+}
+
+application {
+    mainClass = 'it.unicam.cs.mpgc.rpg129024.App'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
