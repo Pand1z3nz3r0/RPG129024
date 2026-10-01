@@ -43,5 +43,5 @@ La documentazione completa del progetto (funzionalità, responsabilità, classi,
 
 ## Uso di strumenti di AI
 
-Nella realizzazione del progetto è stato utilizzato **Claude** (Anthropic) come supporto per la configurazione dell'ambiente (Gradle, JavaFX, Git), per la discussione delle scelte di progettazione e per la generazione degli sprite dei personaggi.
+Nella realizzazione del progetto è stato utilizzato **Claude** come supporto per la configurazione dell'ambiente (Gradle, JavaFX, Git), per la discussione delle scelte di progettazione e per la generazione degli sprite dei personaggi.
 La dichiarazione dettagliata è nella pagina [Dichiarazione uso AI](../../wiki/Dichiarazione-uso-AI) della Wiki.
