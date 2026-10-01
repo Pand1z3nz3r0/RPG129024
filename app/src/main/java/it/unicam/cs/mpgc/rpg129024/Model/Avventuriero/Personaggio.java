@@ -6,7 +6,7 @@ public abstract class Personaggio {
     private int hpMax;
     private int ad;
 
-    public Personaggio(String nome, int hp, int ad) {
+    protected Personaggio(String nome, int hp, int ad) {
         if (nome == null || nome.isEmpty() || hp <= 0 || ad <= 0) {
             throw new IllegalArgumentException("valori personaggio non consentiti");
         }
@@ -31,7 +31,7 @@ public abstract class Personaggio {
 
     public void potenziamento(int potenziamentoHP, int potenziamentoAD){
         if(potenziamentoAD<=0 || potenziamentoHP<=0){
-            throw new IllegalArgumentException(" i valori negativi non sono disponibili");
+            throw new IllegalArgumentException(" i potenziamenti non devono essere negativi");
         }
         this.hp = getHP() + potenziamentoHP;
         this.ad = getAD() + potenziamentoAD;
