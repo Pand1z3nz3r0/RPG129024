@@ -1,38 +1,57 @@
 package it.unicam.cs.mpgc.rpg129024.Model.Avventuriero;
 
 public abstract class Personaggio {
-    public String nome;
-    public int HP;
-    public int AD;
+    private final String nome;
+    private int hp;
+    private int hpMax;
+    private int ad;
 
-    public Personaggio(String nome, int HP, int AD) {
-        if (nome == null || nome.isEmpty() && HP <= 0 && AD <= 0) {
+    public Personaggio(String nome, int hp, int ad) {
+        if (nome == null || nome.isEmpty() || hp <= 0 || ad <= 0) {
             throw new IllegalArgumentException("valori personaggio non consentiti");
         }
         this.nome = nome;
+        this.hp = hp;
+        this.hpMax = hp;
+        this.ad = ad;
     }
 
-    public int getHP() {
-        return HP;
+    public int subisciDanno(int danno){
+        if(danno<=0){
+            throw new IllegalArgumentException("il danno deve essere maggiore di 0");
+        }
+         return this.hp = Math.max(0, getHP() - danno);
+    }
+    public void cura(int recuperoHp){
+        if(recuperoHp<=0){
+            throw new IllegalArgumentException("la recuperoHp non può essere uguale o minore di 0");
+        }
+        this.hp = Math.min(getHP(), this.getHP() + recuperoHp);
     }
 
+    public void potenziamento(int potenziamentoHP, int potenziamentoAD){
+        if(potenziamentoAD<=0 || potenziamentoHP<=0){
+            throw new IllegalArgumentException(" i valori negativi non sono disponibili");
+        }
+        this.hp = getHP() + potenziamentoHP;
+        this.ad = getAD() + potenziamentoAD;
+    }
+    public boolean isVivo(){
+        return getHP() > 0;
+    }
     public String getNome() {
         return nome;
     }
 
+    public int getHP() {
+        return hp;
+    }
+
     public int getAD() {
-        return AD;
+        return ad;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setHP(int HP) {
-        this.HP = HP;
-    }
-
-    public void setAD(int AD) {
-        this.AD = AD;
+    public int getHpMax() {
+        return hpMax;
     }
 }
