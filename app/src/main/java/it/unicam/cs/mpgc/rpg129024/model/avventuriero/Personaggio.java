@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg129024.Model.Avventuriero;
+package it.unicam.cs.mpgc.rpg129024.model.avventuriero;
 
 public abstract class Personaggio {
     private final String nome;

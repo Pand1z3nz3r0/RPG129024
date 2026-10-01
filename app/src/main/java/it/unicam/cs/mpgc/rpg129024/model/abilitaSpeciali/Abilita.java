@@ -1,7 +1,7 @@
-package it.unicam.cs.mpgc.rpg129024.Model.Abilita;
+package it.unicam.cs.mpgc.rpg129024.model.abilitaSpeciali;
 
-import it.unicam.cs.mpgc.rpg129024.Model.Avventuriero.Avventuriero;
-import it.unicam.cs.mpgc.rpg129024.Model.Avventuriero.Personaggio;
+import it.unicam.cs.mpgc.rpg129024.model.avventuriero.Avventuriero;
+import it.unicam.cs.mpgc.rpg129024.model.avventuriero.Personaggio;
 
 public interface Abilita {
         public String getNome();

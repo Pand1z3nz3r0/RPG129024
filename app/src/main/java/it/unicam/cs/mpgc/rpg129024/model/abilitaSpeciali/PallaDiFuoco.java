@@ -1,7 +1,7 @@
-package it.unicam.cs.mpgc.rpg129024.Model.Abilita;
+package it.unicam.cs.mpgc.rpg129024.model.abilitaSpeciali;
 
-import it.unicam.cs.mpgc.rpg129024.Model.Avventuriero.Avventuriero;
-import it.unicam.cs.mpgc.rpg129024.Model.Avventuriero.Personaggio;
+import it.unicam.cs.mpgc.rpg129024.model.avventuriero.Avventuriero;
+import it.unicam.cs.mpgc.rpg129024.model.avventuriero.Personaggio;
 
 public class PallaDiFuoco implements Abilita {
 
@@ -23,6 +23,10 @@ public class PallaDiFuoco implements Abilita {
 
     @Override
     public int usa(Avventuriero utilizzatore, Personaggio bersaglio) {
-        return 0;
+        int danno = 0;
+        danno = (int) (utilizzatore.getAD() * Math.round(this.moltiplicatore));
+        bersaglio.subisciDanno(danno);
+        return danno;
+
     }
 }
