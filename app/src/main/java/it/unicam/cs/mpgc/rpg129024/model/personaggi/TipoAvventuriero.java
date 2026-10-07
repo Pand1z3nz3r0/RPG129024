@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg129024.model.personaggio;
+package it.unicam.cs.mpgc.rpg129024.model.personaggi;
 
 import it.unicam.cs.mpgc.rpg129024.model.abilita.Abilita;
 import it.unicam.cs.mpgc.rpg129024.model.abilita.Furia;
@@ -56,8 +56,6 @@ public enum TipoAvventuriero {
          * @param nomeGiocatore il nome scelto dal giocatore
          * @return un nuovo avventuriero con le statistiche iniziali di questo tipo
          * @throws IllegalStateException se il tipo non è ancora disponibile
-         *
-         * @author Davide Caliri
          */
         public Avventuriero crea(String nomeGiocatore) {
                 if (!this.disponibile) {

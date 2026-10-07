@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg129024.model.personaggio;
+package it.unicam.cs.mpgc.rpg129024.model.personaggi;
 
 public abstract class Personaggio {
 
