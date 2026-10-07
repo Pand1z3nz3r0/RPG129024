@@ -1,6 +1,4 @@
-package it.unicam.cs.mpgc.rpg129024.model.avventuriero;
-
-import it.unicam.cs.mpgc.rpg129024.model.abilitaSpeciali.Abilita;
+package it.unicam.cs.mpgc.rpg129024.model.personaggio;
 
 public class Mostro extends Personaggio {
 

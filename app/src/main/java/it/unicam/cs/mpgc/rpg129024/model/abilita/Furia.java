@@ -1,7 +1,7 @@
-package it.unicam.cs.mpgc.rpg129024.model.abilitaSpeciali;
+package it.unicam.cs.mpgc.rpg129024.model.abilita;
 
-import it.unicam.cs.mpgc.rpg129024.model.avventuriero.Avventuriero;
-import it.unicam.cs.mpgc.rpg129024.model.avventuriero.Personaggio;
+import it.unicam.cs.mpgc.rpg129024.model.personaggio.Avventuriero;
+import it.unicam.cs.mpgc.rpg129024.model.personaggio.Personaggio;
 
 public class Furia implements Abilita {
     private final double moltiplicatore = 2.0;
@@ -23,7 +23,7 @@ public class Furia implements Abilita {
     @Override
     public int usa(Avventuriero utilizzatore, Personaggio bersaglio) {
             int danno = 0;
-            danno = (int) (utilizzatore.getAD() * Math.round(this.moltiplicatore));
+            danno = (int) (utilizzatore.getAd() * Math.round(this.moltiplicatore));
             bersaglio.subisciDanno(danno);
             return danno;
 

@@ -1,8 +1,8 @@
-package it.unicam.cs.mpgc.rpg129024.model.avventuriero;
+package it.unicam.cs.mpgc.rpg129024.model.personaggio;
 
-import it.unicam.cs.mpgc.rpg129024.model.abilitaSpeciali.Abilita;
-import it.unicam.cs.mpgc.rpg129024.model.abilitaSpeciali.Furia;
-import it.unicam.cs.mpgc.rpg129024.model.abilitaSpeciali.PallaDiFuoco;
+import it.unicam.cs.mpgc.rpg129024.model.abilita.Abilita;
+import it.unicam.cs.mpgc.rpg129024.model.abilita.Furia;
+import it.unicam.cs.mpgc.rpg129024.model.abilita.PallaDiFuoco;
 
 /**
  * Catalogo dei tipi di avventuriero disponibili nel gioco.
@@ -59,7 +59,7 @@ public enum TipoAvventuriero {
          *
          * @author Davide Caliri
          */
-        public Avventuriero creaAvventuriero(String nomeGiocatore) {
+        public Avventuriero crea(String nomeGiocatore) {
                 if (!this.disponibile) {
                         throw new IllegalStateException(this.nome + " non è ancora disponibile");
                 }

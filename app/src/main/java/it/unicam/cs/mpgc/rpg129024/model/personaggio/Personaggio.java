@@ -1,13 +1,14 @@
-package it.unicam.cs.mpgc.rpg129024.model.avventuriero;
+package it.unicam.cs.mpgc.rpg129024.model.personaggio;
 
 public abstract class Personaggio {
+
     private final String nome;
     private int hp;
     private int hpMax;
     private int ad;
 
     protected Personaggio(String nome, int hp, int ad) {
-        if (nome == null || nome.isEmpty() || hp <= 0 || ad <= 0) {
+        if (nome == null || nome.isBlank() || hp <= 0 || ad <= 0) {
             throw new IllegalArgumentException("valori personaggio non consentiti");
         }
         this.nome = nome;
@@ -16,38 +17,38 @@ public abstract class Personaggio {
         this.ad = ad;
     }
 
-    public int subisciDanno(int danno){
+    public void subisciDanno(int danno){
         if(danno<=0){
             throw new IllegalArgumentException("il danno deve essere maggiore di 0");
         }
-         return this.hp = Math.max(0, getHP() - danno);
+        this.hp = Math.max(0, getHp() - danno);
     }
     public void cura(int recuperoHp){
         if(recuperoHp<=0){
-            throw new IllegalArgumentException("la recuperoHp non può essere uguale o minore di 0");
+            throw new IllegalArgumentException("la cura non può minore o uguale di 0");
         }
-        this.hp = Math.min(getHP(), this.getHP() + recuperoHp);
+        this.hp = Math.min(getHpMax(), this.getHp() + recuperoHp);
     }
 
-    public void potenziamento(int potenziamentoHP, int potenziamentoAD){
-        if(potenziamentoAD<=0 || potenziamentoHP<=0){
-            throw new IllegalArgumentException(" i potenziamenti non devono essere negativi");
+    public void potenzia(int potenziamentoHp, int potenziamentoAd){
+        if(potenziamentoAd<=0 || potenziamentoHp<=0){
+            throw new IllegalArgumentException(" i potenziamenti non devono essere negativi o uguali a 0");
         }
-        this.hp = getHP() + potenziamentoHP;
-        this.ad = getAD() + potenziamentoAD;
+        this.hpMax = getHpMax() + potenziamentoHp;
+        this.ad = getAd() + potenziamentoAd;
     }
     public boolean isVivo(){
-        return getHP() > 0;
+        return getHp() > 0;
     }
     public String getNome() {
         return nome;
     }
 
-    public int getHP() {
+    public int getHp() {
         return hp;
     }
 
-    public int getAD() {
+    public int getAd() {
         return ad;
     }
 

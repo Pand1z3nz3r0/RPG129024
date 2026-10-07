@@ -1,8 +1,9 @@
-package it.unicam.cs.mpgc.rpg129024.model.avventuriero;
+package it.unicam.cs.mpgc.rpg129024.model.personaggio;
 
-import it.unicam.cs.mpgc.rpg129024.model.abilitaSpeciali.Abilita;
+import it.unicam.cs.mpgc.rpg129024.model.abilita.Abilita;
 
 public class Avventuriero extends Personaggio {
+
 
     private final Abilita abilita;
     private final String descrizioneAvventuriero;

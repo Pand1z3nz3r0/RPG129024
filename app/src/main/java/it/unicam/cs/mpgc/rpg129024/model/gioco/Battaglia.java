@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg129024.model.dettagliDiGioco;
+package it.unicam.cs.mpgc.rpg129024.model.gioco;
 
 public class Battaglia {
     private static final double BONUS_HP = 0.08;

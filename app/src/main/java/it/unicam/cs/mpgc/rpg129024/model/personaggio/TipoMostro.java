@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg129024.model.avventuriero;
+package it.unicam.cs.mpgc.rpg129024.model.personaggio;
 
 public enum TipoMostro {
 
@@ -16,7 +16,7 @@ public enum TipoMostro {
         this.ad = ad;
     }
 
-    public Mostro creaMostro() {
+    public Mostro crea() {
         return new Mostro(nome, hp, ad);
     }
 

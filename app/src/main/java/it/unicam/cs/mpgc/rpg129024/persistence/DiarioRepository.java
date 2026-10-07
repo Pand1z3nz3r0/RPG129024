@@ -1,4 +1,7 @@
 package it.unicam.cs.mpgc.rpg129024.persistence;
 
-public @interface DiarioRepository {
+import java.text.Annotation;
+
+public interface DiarioRepository{
+
 }
