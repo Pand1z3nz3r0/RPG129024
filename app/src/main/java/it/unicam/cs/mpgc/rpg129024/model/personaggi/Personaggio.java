@@ -81,6 +81,17 @@ public abstract class Personaggio {
     }
 
     /**
+     * Esegue un attacco base contro il bersaglio, infliggendo danni pari all'AD.
+     *
+     * @param bersaglio il personaggio colpito
+     * @return i danni inflitti
+     */
+    public int attacca(Personaggio bersaglio) {
+        bersaglio.subisciDanno(ad);
+        return ad;
+    }
+
+    /**
      * Indica se il personaggio è ancora in vita.
      *
      * @return {@code true} se gli HP sono maggiori di zero
