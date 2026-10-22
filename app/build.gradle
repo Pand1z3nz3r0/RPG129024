@@ -10,6 +10,7 @@ repositories {
 dependencies {
     testImplementation libs.junit.jupiter
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation libs.gson
 }
 
 java {
@@ -20,7 +21,7 @@ java {
 
 javafx {
     version = '25.0.4'
-    modules = [ 'javafx.controls' ]
+    modules = ['javafx.controls']
 }
 
 application {
