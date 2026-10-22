@@ -31,7 +31,7 @@ public enum TipoMostro {
      *
      * @return un nuovo mostro
      */
-    public Mostro crea() {
+    public Mostro creaMostro() {
         return new Mostro(nome, hp, ad);
     }
 
