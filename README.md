@@ -23,6 +23,9 @@ Il re ha scelto te, coraggioso avventuriero, armato solo della tua forza e di un
 - Ogni avventura, completata, persa o abbandonata, viene registrata nel **Diario delle avventure**
 
 ---
+## Crediti
+- Font **Press Start 2P** di CodeMan38, rilasciato con licenza SIL Open Font License 1.1 (`resources/font/OFL.txt`).
+---
 ## Esecuzione
 
 Requisiti: **Git** e **Java 25** (se Java 25 non è presente, Gradle lo scarica automaticamente).
