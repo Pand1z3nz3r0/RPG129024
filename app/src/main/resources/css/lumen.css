@@ -1,0 +1,72 @@
+.root {
+    -fx-font-family: "Press Start 2P";
+    -fx-font-size: 12px;
+}
+
+.sottotitolo {
+    -fx-text-fill: #968060;
+}
+
+.campo {
+    -fx-background-color: #1a1613;
+    -fx-text-fill: #f0e6d2;
+    -fx-prompt-text-fill: #6e665e;
+    -fx-background-radius: 0;
+    -fx-border-color: #8b5a2b;
+    -fx-border-width: 6;
+    -fx-padding: 10;
+    -fx-alignment: center;
+}
+
+.suggerimento {
+    -fx-text-fill: #5a544e;
+    -fx-font-size: 10px;
+}
+
+.errore {
+    -fx-text-fill: #c0503c;
+    -fx-font-size: 10px;
+}
+
+.bottone-pixel {
+    -fx-background-color: #8b5a2b;
+    -fx-text-fill: #f0e6d2;
+    -fx-background-radius: 0;
+    -fx-border-color: #1e130a;
+    -fx-border-width: 3;
+    -fx-padding: 12 24;
+    -fx-cursor: hand;
+}
+
+.bottone-pixel:hover {
+    -fx-background-color: #a0693a;
+}
+
+.bottone-pixel:disabled {
+    -fx-opacity: 0.45;
+}
+
+.bottone-secondario {
+    -fx-background-color: #34261c;
+    -fx-text-fill: #f0e6d2;
+    -fx-background-radius: 0;
+    -fx-border-color: #0c0907;
+    -fx-border-width: 3;
+    -fx-padding: 8 12;
+    -fx-cursor: hand;
+}
+
+.bottone-secondario:hover {
+    -fx-background-color: #4e3a2a;
+}
+
+.nota {
+    -fx-text-fill: #5c5650;
+    -fx-font-size: 10px;
+}
+
+.root {
+    -fx-background-color: #14110f;
+    -fx-font-family: "Press Start 2P";
+    -fx-font-size: 12px;
+}
