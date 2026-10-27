@@ -25,7 +25,7 @@ javafx {
 }
 
 application {
-    mainClass = 'it.unicam.cs.mpgc.rpg129024.App'
+    mainClass = 'it.unicam.cs.mpgc.rpg129024.Launcher'
 }
 
 tasks.named('test') {
