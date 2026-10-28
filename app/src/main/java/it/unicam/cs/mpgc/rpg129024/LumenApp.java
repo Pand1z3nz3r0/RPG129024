@@ -1,12 +1,10 @@
 package it.unicam.cs.mpgc.rpg129024;
 
+import it.unicam.cs.mpgc.rpg129024.view.Risorse;
 import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaHome;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
-import java.io.InputStream;
 
 /**
  * Avvio dell'applicazione JavaFX.
@@ -20,21 +18,13 @@ public class LumenApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        caricaFontPixel();
-
+        Risorse.caricaFont();
         Scene scene = new Scene(new PaginaHome().getRadice(), LARGHEZZA, ALTEZZA);
-        scene.getStylesheets().add(getClass().getResource("/css/lumen.css").toExternalForm());
-
+        scene.getStylesheets().add(Risorse.foglioDiStile());
+        
         stage.setTitle("Lumen");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-    }
-
-    private void caricaFontPixel() {
-        InputStream font = getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf");
-        if (font != null) {
-            Font.loadFont(font, 12);
-        }
     }
 }
