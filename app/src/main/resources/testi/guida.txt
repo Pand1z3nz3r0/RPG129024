@@ -1,0 +1,25 @@
+OBIETTIVO
+Morvath ha rapito la principessa Elyra. Attraversa la caverna di Ombrafonda, sconfiggi tutti i mostri e raggiungi la porta in fondo alla caverna.
+
+COME CI SI MUOVE
+Ci si sposta con W A S D oppure con le frecce: W (su), A (sinistra), S (giù), D (destra).
+La caverna è buia: la tua lanterna illumina solo le caselle intorno a te, e i mostri compaiono quando ti avvicini.
+
+LA BATTAGLIA
+Quando entri nella casella di un mostro inizia la battaglia. A ogni turno scegli:
+- ATTACCA: colpisci con la tua forza (AD).
+- ABILITÀ: un colpo speciale molto più potente, che si carica dopo alcuni attacchi. Una volta carica resta pronta finché non decidi di usarla.
+Dopo il tuo colpo, se il mostro è ancora vivo, contrattacca.
+
+DIVENTARE PIÙ FORTI
+Ogni mostro sconfitto ti rende più forte: aumentano la vita massima e l'attacco, e recuperi parte della vita.
+
+LA PORTA
+La porta resta chiusa finché tutti i mostri della caverna non sono stati sconfitti.
+
+FINE DELLA PARTITA
+Se la tua vita arriva a zero, l'avventura finisce. Puoi anche tornare alla Home in qualsiasi momento, ma la partita verrà abbandonata.
+Ogni avventura, vinta, persa o abbandonata, viene registrata nel DIARIO.
+
+CONSIGLIO
+I mostri vicino all'ingresso sono i più deboli: affronta prima loro e rafforzati, prima di avventurarti verso la porta.
