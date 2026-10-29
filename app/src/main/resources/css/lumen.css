@@ -70,3 +70,76 @@
     -fx-font-family: "Press Start 2P";
     -fx-font-size: 12px;
 }
+
+.titolo-sezione {
+    -fx-text-fill: #d6a052;
+    -fx-effect: dropshadow(one-pass-box, #3c200e, 0, 0, 2, 2);
+}
+
+.vbox-guida {
+    -fx-background-color: #1a1613;
+    -fx-border-color: #8b5a2b;
+    -fx-border-width: 6;
+}
+
+.bottone-grande {
+    -fx-font-size: 16px;
+    -fx-padding: 16 60;
+}
+
+.scroll-guida,
+.scroll-guida > .viewport {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.titolo-pagina {
+    -fx-font-size: 36px;
+    -fx-text-fill: #d6a052;
+    -fx-effect: dropshadow(one-pass-box, #3c200e, 0, 0, 4, 4);
+    -fx-padding: 20 0 10 0;
+}
+
+/* la barra verticale */
+.scroll-guida .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 14px;
+}
+
+/* il binario */
+.scroll-guida .scroll-bar:vertical .track {
+    -fx-background-color: #1a1613;
+    -fx-background-radius: 0;
+    -fx-border-color: #3b2412;
+    -fx-border-width: 2;
+}
+
+/* il cursore */
+.scroll-guida .scroll-bar:vertical .thumb {
+    -fx-background-color: #8b5a2b;
+    -fx-background-radius: 0;
+    -fx-background-insets: 2;
+}
+
+.scroll-guida .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #a0693a;
+}
+
+/* nasconde le frecce in alto e in basso */
+.scroll-guida .scroll-bar .increment-button,
+.scroll-guida .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-pref-height: 0;
+}
+
+.scroll-guida .scroll-bar .increment-arrow,
+.scroll-guida .scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+/* l'angolo in basso a destra, dove si incrociano le due barre */
+.scroll-guida .corner {
+    -fx-background-color: transparent;
+}
