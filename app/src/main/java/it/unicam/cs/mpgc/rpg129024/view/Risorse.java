@@ -1,5 +1,7 @@
 package it.unicam.cs.mpgc.rpg129024.view;
 
+import it.unicam.cs.mpgc.rpg129024.model.personaggi.Mostro;
+import it.unicam.cs.mpgc.rpg129024.model.personaggi.TipoAvventuriero;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 
@@ -8,6 +10,7 @@ import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 
 /**
  * Accesso alle risorse dell'interfaccia: immagini, testi, foglio di stile e font.
@@ -24,15 +27,8 @@ public final class Risorse {
     private static final String FONT = "/font/PressStart2P-Regular.ttf";
     private static final double DIMENSIONE_FONT = 12;
 
-    /**
-     *  Costruttore privato: la classe non può essere istanziata. Tutti i metodi
-     *  sono statici.
-     *  <p>
-     *  @throws UnsupportedOperationException se si tenta di istanziare la classe
-     *  </p>
-     */
     private Risorse() {
-        throw new UnsupportedOperationException("La classe non può essere istanziata");
+        // classe di sole funzioni statiche: non si istanzia
     }
 
     /**
@@ -57,6 +53,32 @@ public final class Risorse {
      */
     public static Image immagine(String percorso, double larghezza, double altezza) {
         return new Image(url(percorso).toExternalForm(), larghezza, altezza, true, false);
+    }
+
+    /**
+     * Carica lo sprite di un tipo di avventuriero, ad esempio
+     * {@code /img/barbaro.png} per {@link TipoAvventuriero#BARBARO}.
+     *
+     * @param tipo il tipo di avventuriero
+     * @param lato il lato dell'immagine quadrata
+     * @return lo sprite ridimensionato
+     * @throws IllegalStateException se l'immagine non è presente
+     */
+    public static Image ritratto(TipoAvventuriero tipo, double lato) {
+        return immagine("/img/" + tipo.name().toLowerCase(Locale.ROOT) + ".png", lato, lato);
+    }
+
+    /**
+     * Carica lo sprite di un mostro, cercandolo per nome: ad esempio
+     * {@code /img/zombie.png} per uno Zombie.
+     *
+     * @param mostro il mostro
+     * @param lato   il lato dell'immagine quadrata
+     * @return lo sprite ridimensionato
+     * @throws IllegalStateException se l'immagine non è presente
+     */
+    public static Image ritratto(Mostro mostro, double lato) {
+        return immagine("/img/" + mostro.getNome().toLowerCase(Locale.ROOT) + ".png", lato, lato);
     }
 
     /**
