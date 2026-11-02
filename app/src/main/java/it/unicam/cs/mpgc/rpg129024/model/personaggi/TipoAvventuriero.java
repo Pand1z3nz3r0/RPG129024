@@ -58,7 +58,7 @@ public enum TipoAvventuriero {
      * @throws IllegalStateException    se il tipo non è ancora disponibile
      * @throws IllegalArgumentException se il nome non è valido
      */
-    public Avventuriero crea(String nomeGiocatore) {
+    public Avventuriero creaAvventuriero(String nomeGiocatore) {
         if (!this.disponibile) {
             throw new IllegalStateException(this.nome + " non è ancora disponibile");
         }
