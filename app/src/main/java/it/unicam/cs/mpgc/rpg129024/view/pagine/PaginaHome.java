@@ -1,6 +1,7 @@
 package it.unicam.cs.mpgc.rpg129024.view.pagine;
 
 import it.unicam.cs.mpgc.rpg129024.model.personaggi.Avventuriero;
+import it.unicam.cs.mpgc.rpg129024.view.Navigatore;
 import it.unicam.cs.mpgc.rpg129024.view.Pagina;
 import it.unicam.cs.mpgc.rpg129024.view.Risorse;
 import javafx.geometry.Insets;
@@ -34,9 +35,10 @@ public class PaginaHome implements Pagina {
      * campo del nome con controllo della lunghezza, bottone per iniziare la
      * partita e nota sulla versione demo.
      *
-     * @throws NullPointerException se un'immagine non è presente nelle risorse
+     * @param navigatore il navigatore, per passare alle altre schermate
+     * @throws IllegalStateException se un'immagine non è presente nelle risorse
      */
-    public PaginaHome() {
+    public PaginaHome(Navigatore navigatore) {
         // in alto a destra
         Button guida = new Button("GUIDA");
         Button diario = new Button("DIARIO");
@@ -74,10 +76,12 @@ public class PaginaHome implements Pagina {
             messaggio.getStyleClass().setAll(mostraErrore ? "errore" : "suggerimento");
         });
 
-        // TODO con il navigatore:
-        // inizia.setOnAction(e -> navigatore.vaiAllaScelta(campoNome.getText().trim()));
-        // guida.setOnAction(e -> navigatore.vaiAllaGuida());
-        // diario.setOnAction(e -> navigatore.vaiAlDiario());
+        // azioni dei bottoni
+        guida.setOnAction(e -> navigatore.vaiAllaPaginaGuida());
+        diario.setOnAction(e -> navigatore.vaiAllaPaginaDiario());
+        inizia.setOnAction(e -> navigatore.vaiAllaPaginaScelta(campoNome.getText().trim()));
+        // INVIO nel campo equivale a premere il bottone (che non fa nulla se è disattivato)
+        campoNome.setOnAction(e -> inizia.fire());
 
         VBox centro = new VBox(14, intestazione, sottotitolo, campoNome, messaggio, inizia);
         centro.setAlignment(Pos.TOP_CENTER);
@@ -92,6 +96,7 @@ public class PaginaHome implements Pagina {
         contenuto.setBottom(nota);
         contenuto.setPadding(new Insets(18));
 
+        // lo sfondo dietro a tutto
         radice = new StackPane(new ImageView(Risorse.immagine("/img/sfondo.png")), contenuto);
     }
 
@@ -99,5 +104,4 @@ public class PaginaHome implements Pagina {
     public Parent getRadice() {
         return radice;
     }
-
 }
