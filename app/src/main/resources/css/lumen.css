@@ -143,3 +143,235 @@
 .scroll-guida .corner {
     -fx-background-color: transparent;
 }
+
+.titolo-medio {
+    -fx-font-size: 24px;
+}
+
+.titolo-sconfitta {
+    -fx-text-fill: #c0503c;
+    -fx-effect: dropshadow(one-pass-box, #3c0e0e, 0, 0, 4, 4);
+}
+
+/* riquadro con il bordo, per storia, vittoria e sconfitta */
+.riquadro {
+    -fx-background-color: #1a1613;
+    -fx-border-color: #8b5a2b;
+    -fx-border-width: 6;
+    -fx-padding: 24;
+}
+
+.testo-storia {
+    -fx-text-fill: #f0e6d2;
+    -fx-font-size: 12px;
+    -fx-line-spacing: 8px;
+}
+
+/* ---------- scelta dell'avventuriero ---------- */
+
+.card {
+    -fx-background-color: #1a1613;
+    -fx-border-color: #8b5a2b;
+    -fx-border-width: 6;
+    -fx-padding: 16;
+}
+
+.card-bloccata {
+    -fx-border-color: #3b2412;
+    -fx-opacity: 0.7;
+}
+
+.nome-card {
+    -fx-text-fill: #d6a052;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(one-pass-box, #3c200e, 0, 0, 2, 2);
+}
+
+.descrizione-card {
+    -fx-text-fill: #968060;
+    -fx-font-size: 8px;
+    -fx-line-spacing: 4px;
+}
+
+.statistiche {
+    -fx-text-fill: #f0e6d2;
+    -fx-font-size: 10px;
+    -fx-line-spacing: 6px;
+}
+
+.info {
+    -fx-text-fill: #f0e6d2;
+    -fx-font-size: 10px;
+}
+
+/* ---------- mappa ---------- */
+
+.pagina-mappa {
+    -fx-background-color: #14110f;
+}
+
+.barra-info {
+    -fx-background-color: #1a1613;
+    -fx-border-color: #8b5a2b;
+    -fx-border-width: 4;
+    -fx-padding: 6 12;
+}
+
+.cornice-mappa {
+    -fx-background-color: #0c0907;
+    -fx-border-color: #8b5a2b;
+    -fx-border-width: 6;
+}
+
+/* ---------- battaglia ---------- */
+
+.vs {
+    -fx-text-fill: #d6a052;
+    -fx-font-size: 28px;
+    -fx-effect: dropshadow(one-pass-box, #3c200e, 0, 0, 3, 3);
+}
+
+/* barra della vita squadrata */
+.barra-vita {
+    -fx-pref-height: 22px;
+    -fx-padding: 0;
+}
+
+.barra-vita > .track {
+    -fx-background-color: #0c0907, #2a201a;
+    -fx-background-insets: 0, 3;
+    -fx-background-radius: 0;
+}
+
+.barra-vita > .bar {
+    -fx-background-insets: 3;
+    -fx-background-radius: 0;
+    -fx-padding: 8;
+}
+
+.barra-eroe > .bar {
+    -fx-background-color: #5c9e3c;
+}
+
+.barra-mostro > .bar {
+    -fx-background-color: #c0503c;
+}
+
+/* registro dei turni */
+.log {
+    -fx-control-inner-background: #1a1613;
+    -fx-background-color: #8b5a2b, #1a1613;
+    -fx-background-insets: 0, 4;
+    -fx-background-radius: 0;
+    -fx-text-fill: #f0e6d2;
+    -fx-font-size: 10px;
+    -fx-highlight-fill: #8b5a2b;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.log .content {
+    -fx-background-color: #1a1613;
+    -fx-background-radius: 0;
+    -fx-padding: 8;
+}
+
+.log .scroll-pane,
+.log .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.log .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 14px;
+}
+
+.log .scroll-bar:vertical .track {
+    -fx-background-color: #1a1613;
+    -fx-background-radius: 0;
+}
+
+.log .scroll-bar:vertical .thumb {
+    -fx-background-color: #8b5a2b;
+    -fx-background-radius: 0;
+    -fx-background-insets: 2;
+}
+
+.log .scroll-bar .increment-button,
+.log .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-pref-height: 0;
+}
+
+.log .scroll-bar .increment-arrow,
+.log .scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+/* ---------- diario ---------- */
+
+.voce-diario {
+    -fx-background-color: #241c16;
+    -fx-border-color: #3b2412;
+    -fx-border-width: 3;
+    -fx-padding: 12;
+}
+
+.nome-voce {
+    -fx-text-fill: #d6a052;
+    -fx-font-size: 12px;
+}
+
+.esito-completata {
+    -fx-text-fill: #d6a052;
+    -fx-font-size: 10px;
+}
+
+.esito-sconfitta {
+    -fx-text-fill: #c0503c;
+    -fx-font-size: 10px;
+}
+
+.esito-abbandonata {
+    -fx-text-fill: #968060;
+    -fx-font-size: 10px;
+}
+
+/* ---------- finestre di dialogo ---------- */
+
+.dialog-pane {
+    -fx-background-color: #1a1613;
+    -fx-border-color: #8b5a2b;
+    -fx-border-width: 6;
+}
+
+.dialog-pane > .content.label {
+    -fx-text-fill: #f0e6d2;
+    -fx-font-size: 10px;
+    -fx-line-spacing: 6px;
+    -fx-padding: 24 24 8 24;
+}
+
+.dialog-pane > .button-bar > .container {
+    -fx-padding: 12 24 20 24;
+}
+
+.dialog-pane .button {
+    -fx-background-color: #8b5a2b;
+    -fx-text-fill: #f0e6d2;
+    -fx-background-radius: 0;
+    -fx-border-color: #1e130a;
+    -fx-border-width: 3;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #a0693a;
+}
+
+.nome-abilita {
+    -fx-text-fill: #d6a052;
+    -fx-font-size: 10px;
+}
