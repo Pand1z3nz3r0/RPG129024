@@ -6,15 +6,7 @@ import it.unicam.cs.mpgc.rpg129024.model.personaggi.Avventuriero;
 import it.unicam.cs.mpgc.rpg129024.persistence.DiarioRepository;
 import it.unicam.cs.mpgc.rpg129024.persistence.PersistenzaException;
 import it.unicam.cs.mpgc.rpg129024.persistence.VoceDiario;
-import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaBattaglia;
-import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaDiario;
-import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaGuida;
-import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaHome;
-import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaMappa;
-import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaScelta;
-import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaSconfitta;
-import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaStoria;
-import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaVittoria;
+import it.unicam.cs.mpgc.rpg129024.view.pagine.*;
 import javafx.scene.Scene;
 
 import java.util.Objects;
@@ -48,17 +40,23 @@ public class Navigatore {
         this.diario = Objects.requireNonNull(diario, "Il diario non può essere null");
     }
 
-    /** Mostra la schermata iniziale. */
+    /**
+     * Mostra la schermata iniziale.
+     */
     public void vaiAllaPaginaHome() {
         mostra(new PaginaHome(this));
     }
 
-    /** Mostra la guida di gioco. */
+    /**
+     * Mostra la guida di gioco.
+     */
     public void vaiAllaPaginaGuida() {
         mostra(new PaginaGuida(this));
     }
 
-    /** Mostra il diario delle avventure passate. */
+    /**
+     * Mostra il diario delle avventure passate.
+     */
     public void vaiAllaPaginaDiario() {
         mostra(new PaginaDiario(this, diario));
     }
