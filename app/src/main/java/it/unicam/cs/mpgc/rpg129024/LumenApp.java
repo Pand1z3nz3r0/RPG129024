@@ -18,6 +18,7 @@ import javafx.stage.Stage;
  */
 public class LumenApp extends Application {
 
+    /** larghezza e altezza della finestra */
     public static final int LARGHEZZA = 960;
     public static final int ALTEZZA = 600;
 

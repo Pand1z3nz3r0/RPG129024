@@ -45,6 +45,14 @@ public final class Dialoghi {
         return alert.showAndWait().filter(si::equals).isPresent();
     }
 
+    /**
+     * metodo privato che crea gli alert con lo stesso stile delle pagine
+     * @param tipo tipo di alert
+     * @param titolo titolo della finestra
+     * @param testo  messaggio da visualizzare
+     * @param bottoni bottoni da visualizzare
+     * @return alert creato
+     */
     private static Alert crea(Alert.AlertType tipo, String titolo, String testo, ButtonType... bottoni) {
         Alert alert = new Alert(tipo, testo, bottoni);
         alert.setTitle(titolo);

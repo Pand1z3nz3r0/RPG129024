@@ -121,6 +121,12 @@ public final class Risorse {
         }
     }
 
+    /**
+     * Metodo privato che crea un url per il percorso richiesto
+     * @param percorso percorso del file
+     * @return url del file
+     * @throws IllegalStateException se il file non è presente
+     */
     private static URL url(String percorso) {
         URL url = Risorse.class.getResource(percorso);
         if (url == null) {
