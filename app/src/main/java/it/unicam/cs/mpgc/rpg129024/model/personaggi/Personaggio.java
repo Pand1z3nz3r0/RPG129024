@@ -44,7 +44,7 @@ public abstract class Personaggio {
      */
     public void subisciDanno(int danno) {
         if (danno < 0) {
-            throw new IllegalArgumentException("il danno deve essere maggiore di 0");
+            throw new IllegalArgumentException("il danno non deve essere minore di 0");
         }
         this.hp = Math.max(0, getHp() - danno);
     }
@@ -57,7 +57,7 @@ public abstract class Personaggio {
      */
     public void cura(int recuperoHp) {
         if (recuperoHp < 0) {
-            throw new IllegalArgumentException("la cura non può minore 0");
+            throw new IllegalArgumentException("la cura non deve essere minore di 0");
         }
         this.hp = Math.min(getHpMax(), this.getHp() + recuperoHp);
     }
@@ -100,18 +100,30 @@ public abstract class Personaggio {
         return getHp() > 0;
     }
 
+    /**
+     * @return il nome del personaggio
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     * @return il valore degli hp in tempo reale
+     */
     public int getHp() {
         return hp;
     }
 
+    /**
+     * @return il valore di ad in tempo reale
+     */
     public int getAd() {
         return ad;
     }
 
+    /**
+     * @return il valore degli hpMax in tempo reale
+     */
     public int getHpMax() {
         return hpMax;
     }
