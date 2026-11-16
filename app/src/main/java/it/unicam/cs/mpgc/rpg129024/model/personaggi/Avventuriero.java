@@ -2,6 +2,8 @@ package it.unicam.cs.mpgc.rpg129024.model.personaggi;
 
 import it.unicam.cs.mpgc.rpg129024.model.abilita.Abilita;
 
+import java.util.List;
+
 /**
  * Il personaggio controllato dal giocatore.
  * <p>
@@ -12,7 +14,13 @@ import it.unicam.cs.mpgc.rpg129024.model.abilita.Abilita;
  */
 public class Avventuriero extends Personaggio {
 
+    /**
+     * lunghezza minima del nome
+     */
     public static final int LUNGHEZZA_MIN_NOME = 3;
+    /**
+     * lunghezza massima del nome
+     */
     public static final int LUNGHEZZA_MAX_NOME = 15;
 
 
@@ -48,20 +56,16 @@ public class Avventuriero extends Personaggio {
     }
 
     /**
-     * Restituisce il tipo dell'avventuriero.
-     *
-     * @return il tipo
+     * @return il tipo dell'avventuriero
      */
     public TipoAvventuriero getTipo() {
         return tipo;
     }
 
     /**
-     * Restituisce l'abilità speciale dell'avventuriero.
-     *
-     * @return l'abilità speciale
+     * @return le abilità speciali, in una lista non modificabile
      */
-    public Abilita getAbilita() {
+    public List<Abilita> getAbilita() {
         return tipo.getAbilita();
     }
 }

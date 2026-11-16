@@ -1,8 +1,11 @@
 package it.unicam.cs.mpgc.rpg129024.model.gioco;
 
+import it.unicam.cs.mpgc.rpg129024.model.abilita.Abilita;
 import it.unicam.cs.mpgc.rpg129024.model.personaggi.Avventuriero;
 import it.unicam.cs.mpgc.rpg129024.model.personaggi.Mostro;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -23,7 +26,7 @@ public class Battaglia {
     private final Avventuriero avventuriero;
     private final Mostro mostro;
     private int turno;
-    private int attacchiMancanti;
+    private final Map<Abilita, Integer> ricariche = new HashMap<>();
 
     /**
      * Crea una nuova battaglia. L'abilità parte scarica.
@@ -36,7 +39,9 @@ public class Battaglia {
         this.avventuriero = Objects.requireNonNull(avventuriero, "L'avventuriero non può essere null");
         this.mostro = Objects.requireNonNull(mostro, "Il mostro non può essere null");
         this.turno = 0;
-        this.attacchiMancanti = avventuriero.getAbilita().getRicarica();
+        for (Abilita a : this.avventuriero.getAbilita()) {
+            this.ricariche.put(a, a.getRicarica());
+        }
     }
 
     /**
@@ -48,27 +53,27 @@ public class Battaglia {
     public EsitoTurno attaccoBase() {
         controllaInCorso();
         int dannoInflitto = avventuriero.attacca(mostro);
-        if (attacchiMancanti > 0) {
-            attacchiMancanti--;
-        }
-        return concludiTurno(false, dannoInflitto);
+        ricariche.replaceAll((abilita, mancanti) -> Math.max(0, mancanti - 1));
+        return concludiTurno(null, dannoInflitto);
     }
 
     /**
-     * Esegue un turno in cui l'avventuriero usa la sua abilità speciale.
+     * Esegue un turno in cui l'avventuriero usa una delle sue abilità speciali.
      * Dopo l'uso l'abilità torna scarica.
      *
+     * @param abilita l'abilità da usare, tra quelle dell'avventuriero
      * @return il resoconto del turno
-     * @throws IllegalStateException se la battaglia è finita o l'abilità non è pronta
+     * @throws IllegalStateException    se la battaglia è finita o l'abilità non è pronta
+     * @throws IllegalArgumentException se l'avventuriero non possiede l'abilità
      */
-    public EsitoTurno usaAbilita() {
+    public EsitoTurno usaAbilita(Abilita abilita) {
         controllaInCorso();
-        if (!isAbilitaPronta()) {
+        if (!isAbilitaPronta(abilita)) {
             throw new IllegalStateException("L'abilità non è ancora pronta");
         }
-        int dannoInflitto = avventuriero.getAbilita().usa(avventuriero, mostro);
-        attacchiMancanti = avventuriero.getAbilita().getRicarica();
-        return concludiTurno(true, dannoInflitto);
+        int dannoInflitto = abilita.usa(avventuriero, mostro);
+        ricariche.put(abilita, abilita.getRicarica());
+        return concludiTurno(abilita, dannoInflitto);
     }
 
     /**
@@ -78,7 +83,7 @@ public class Battaglia {
      * @param dannoInflitto i danni inflitti dall'avventuriero
      * @return il resoconto del turno
      */
-    private EsitoTurno concludiTurno(boolean abilitaUsata, int dannoInflitto) {
+    private EsitoTurno concludiTurno(Abilita abilitaUsata, int dannoInflitto) {
         turno++;
         int dannoSubito = 0;
         if (mostro.isVivo()) {
@@ -97,17 +102,26 @@ public class Battaglia {
     }
 
     /**
-     * @return {@code true} se l'abilità speciale può essere usata in questo turno
+     * @param abilita un'abilità dell'avventuriero
+     * @return gli attacchi base ancora necessari prima che l'abilità sia pronta
+     * @throws IllegalArgumentException se l'avventuriero non possiede l'abilità
      */
-    public boolean isAbilitaPronta() {
-        return attacchiMancanti == 0;
+    public int getAttacchiMancanti(Abilita abilita) {
+        Objects.requireNonNull(abilita, "L'abilità non può essere null");
+        Integer mancanti = ricariche.get(abilita);
+        if (mancanti == null) {
+            throw new IllegalArgumentException("L'avventuriero non possiede l'abilità " + abilita.getNome());
+        }
+        return mancanti;
     }
 
     /**
-     * @return gli attacchi base ancora necessari prima che l'abilità sia pronta
+     * @param abilita un'abilità dell'avventuriero
+     * @return {@code true} se l'abilità può essere usata in questo turno
+     * @throws IllegalArgumentException se l'avventuriero non possiede l'abilità
      */
-    public int getAttacchiMancanti() {
-        return attacchiMancanti;
+    public boolean isAbilitaPronta(Abilita abilita) {
+        return getAttacchiMancanti(abilita) == 0;
     }
 
     /**

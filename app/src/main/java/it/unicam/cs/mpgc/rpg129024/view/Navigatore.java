@@ -6,7 +6,15 @@ import it.unicam.cs.mpgc.rpg129024.model.personaggi.Avventuriero;
 import it.unicam.cs.mpgc.rpg129024.persistence.DiarioRepository;
 import it.unicam.cs.mpgc.rpg129024.persistence.PersistenzaException;
 import it.unicam.cs.mpgc.rpg129024.persistence.VoceDiario;
-import it.unicam.cs.mpgc.rpg129024.view.pagine.*;
+import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaBattaglia;
+import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaDiario;
+import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaGuida;
+import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaHome;
+import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaMappa;
+import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaScelta;
+import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaSconfitta;
+import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaStoria;
+import it.unicam.cs.mpgc.rpg129024.view.pagine.PaginaVittoria;
 import javafx.scene.Scene;
 
 import java.util.Objects;
@@ -140,6 +148,11 @@ public class Navigatore {
         }
     }
 
+    /**
+     * metodo privato che cambia la pagina in base a quella richiesta
+     *
+     * @param pagina pagina da mostrare
+     */
     private void mostra(Pagina pagina) {
         scena.setRoot(pagina.getRadice());
         pagina.mostrata();

@@ -1,53 +1,51 @@
 package it.unicam.cs.mpgc.rpg129024.model.personaggi;
 
 import it.unicam.cs.mpgc.rpg129024.model.abilita.Abilita;
-import it.unicam.cs.mpgc.rpg129024.model.abilita.Furia;
-import it.unicam.cs.mpgc.rpg129024.model.abilita.PallaDiFuoco;
+import it.unicam.cs.mpgc.rpg129024.model.abilita.AttaccoPotenziato;
+
+import java.util.List;
 
 /**
  * Catalogo dei tipi di avventuriero disponibili nel gioco.
- * <p>
- * Ogni tipo definisce le statistiche iniziali, l'abilità speciale e la
- * descrizione mostrata nella schermata di scelta. Per aggiungere un nuovo
- * tipo di avventuriero è sufficiente aggiungere una costante.
  *
  * @author Davide Caliri
  */
 public enum TipoAvventuriero {
-
     BARBARO("Barbaro",
             "Un guerriero delle terre selvagge, robusto e instancabile. "
                     + "Ha più vita di chiunque altro e, quando la rabbia lo travolge, "
                     + "scatena la sua Furia.",
-            120, 14, new Furia(), true),
-
+            120, 14, true,
+            new AttaccoPotenziato("Furia", "Colpo potente", 3, 2.0)
+    ),
     MAGO("Mago",
             "Uno studioso delle arti arcane: fragile nel corpo, ma devastante nella magia. "
                     + "Ha meno vita del Barbaro, ma colpisce più forte, "
                     + "e la sua Palla di fuoco può ribaltare uno scontro.",
-            90, 18, new PallaDiFuoco(), true),
-
+            90, 18, true,
+            new AttaccoPotenziato("Palla di fuoco", "Lancia una palla di fuoco", 4, 2.5)
+    ),
     TANK("Tank",
             "Si narra di un guardiano dall'armatura impenetrabile, "
                     + "capace di resistere a qualunque colpo… "
                     + "Nessuno sa ancora dove si trovi.",
-            0, 0, null, false);
-
+            0, 0, false
+    );
     private final String nome;
     private final String descrizione;
     private final int hp;
     private final int ad;
-    private final Abilita abilita;
     private final boolean disponibile;
+    private final List<Abilita> abilita;
 
     TipoAvventuriero(String nome, String descrizione, int hp, int ad,
-                     Abilita abilita, boolean disponibile) {
+                     boolean disponibile, Abilita... abilita) {
         this.nome = nome;
         this.descrizione = descrizione;
         this.hp = hp;
         this.ad = ad;
-        this.abilita = abilita;
         this.disponibile = disponibile;
+        this.abilita = List.of(abilita);
     }
 
     /**
@@ -66,44 +64,44 @@ public enum TipoAvventuriero {
     }
 
     /**
-     * @return il nome del tipo di avventuriero
+     * @return le abilità dell'avventuriero
+     */
+    public List<Abilita> getAbilita() {
+        return abilita;
+    }
+
+    /**
+     * @return il nome dell'avventuriero
      */
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     /**
-     * @return la descrzione mostrata nella schermata di scelta
+     * @return la descrizione dell'avventuriero
      */
     public String getDescrizione() {
-        return descrizione;
+        return this.descrizione;
     }
 
     /**
-     * @return i punti vita iniziali
+     * @return il valore degli hp iniziale
      */
     public int getHp() {
-        return hp;
+        return this.hp;
     }
 
     /**
      * @return il valore di attacco iniziale
      */
     public int getAd() {
-        return ad;
+        return this.ad;
     }
 
     /**
-     * @return l'abilità speciale, oppure {@code null} se il tipo non è disponibile
-     */
-    public Abilita getAbilita() {
-        return abilita;
-    }
-
-    /**
-     * @return {@code true} se il tipo può essere scelto dal giocatore
+     * @return la disponibilità dell'avventuriero o meno
      */
     public boolean isDisponibile() {
-        return disponibile;
+        return this.disponibile;
     }
 }

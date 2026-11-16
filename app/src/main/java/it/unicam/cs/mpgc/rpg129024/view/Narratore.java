@@ -40,8 +40,8 @@ public final class Narratore {
      * @return la descrizione del turno, su una o due righe
      */
     public static String descriviTurno(EsitoTurno esito, Avventuriero avventuriero, Mostro mostro) {
-        String azione = esito.abilitaUsata()
-                ? " usa " + avventuriero.getAbilita().getNome() + "!"
+        String azione = esito.haUsatoAbilita()
+                ? " usa " + esito.abilitaUsata().getNome() + "!"
                 : " attacca.";
         String testo = "Turno " + esito.numero() + " - " + avventuriero.getNome() + azione
                 + " " + mostro.getNome() + " subisce " + esito.dannoInflitto() + " danni.";

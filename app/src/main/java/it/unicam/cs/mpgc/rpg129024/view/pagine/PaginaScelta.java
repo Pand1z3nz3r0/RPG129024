@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg129024.view.pagine;
 
+import it.unicam.cs.mpgc.rpg129024.model.abilita.Abilita;
 import it.unicam.cs.mpgc.rpg129024.model.personaggi.TipoAvventuriero;
 import it.unicam.cs.mpgc.rpg129024.view.Navigatore;
 import it.unicam.cs.mpgc.rpg129024.view.Pagina;
@@ -11,10 +12,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 /**
  * Schermata in cui il giocatore sceglie il tipo del proprio avventuriero.
@@ -92,9 +98,13 @@ public class PaginaScelta implements Pagina {
                 : "HP ???   AD ???");
         statistiche.getStyleClass().add("statistiche");
 
-        Label abilita = new Label(tipo.isDisponibile()
-                ? tipo.getAbilita().getNome().toUpperCase(Locale.ROOT)
-                : "???");
+        String testoAbilita = tipo.isDisponibile()
+                ? tipo.getAbilita().stream()
+                .map(Abilita::getNome)
+                .collect(Collectors.joining(" / "))
+                .toUpperCase(Locale.ROOT)
+                : "???";
+        Label abilita = new Label(testoAbilita);
         abilita.getStyleClass().add("nome-abilita");
 
         // le etichette non si accorciano mai: se manca spazio si riduce solo lo spazio elastico

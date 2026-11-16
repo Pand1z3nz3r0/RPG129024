@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg129024.view.pagine;
 
+import it.unicam.cs.mpgc.rpg129024.model.abilita.Abilita;
 import it.unicam.cs.mpgc.rpg129024.model.gioco.Battaglia;
 import it.unicam.cs.mpgc.rpg129024.model.gioco.EsitoTurno;
 import it.unicam.cs.mpgc.rpg129024.model.gioco.Partita;
@@ -23,7 +24,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Schermata di una battaglia a turni tra l'avventuriero e un mostro.
@@ -50,7 +53,7 @@ public class PaginaBattaglia implements Pagina {
     private final Scheda schedaMostro;
     private final TextArea registro = new TextArea();
     private final Button attacca = new Button("ATTACCA");
-    private final Button abilita = new Button();
+    private final Map<Abilita, Button> bottoniAbilita = new LinkedHashMap<>();
     private final Button continua = new Button("CONTINUA");
 
     /**
@@ -91,24 +94,30 @@ public class PaginaBattaglia implements Pagina {
 
         // bottoni
         attacca.getStyleClass().add("bottone-pixel");
-        abilita.getStyleClass().add("bottone-pixel");
-        continua.getStyleClass().add("bottone-pixel");
         attacca.setOnAction(e -> mostraTurno(battaglia.attaccoBase()));
-        abilita.setOnAction(e -> mostraTurno(battaglia.usaAbilita()));
+        for (Abilita a : avventuriero.getAbilita()) {
+            Button btn = new Button();
+            btn.getStyleClass().add("bottone-pixel");
+            btn.setOnAction(e -> mostraTurno(battaglia.usaAbilita(a)));
+            bottoniAbilita.put(a, btn);
+        }
+        continua.getStyleClass().add("bottone-pixel");
         continua.setOnAction(e -> partita.concludiBattaglia().ifPresentOrElse(
                 ricompensa -> navigatore.vaiAllaPaginaVittoria(partita, ricompensa),
                 () -> navigatore.vaiAllaPaginaSconfitta(partita)));
         // CONTINUA è nascosto finché la battaglia non finisce
         mostraContinua(false);
 
-        HBox bottoni = new HBox(16, attacca, abilita, continua);
+        HBox bottoni = new HBox(16);
         bottoni.setAlignment(Pos.CENTER);
-
+        bottoni.getChildren().add(attacca);
+        bottoni.getChildren().addAll(bottoniAbilita.values());
+        bottoni.getChildren().add(continua);
         VBox contenuto = new VBox(14, titolo, combattenti, registro, bottoni);
         contenuto.setAlignment(Pos.TOP_CENTER);
         contenuto.setPadding(new Insets(0, 0, 20, 0));
 
-        radice = new StackPane(new javafx.scene.image.ImageView(Risorse.immagine("/img/sfondo.png")), contenuto);
+        radice = new StackPane(new ImageView(Risorse.immagine("/img/sfondo.png")), contenuto);
         aggiorna();
     }
 
@@ -135,12 +144,12 @@ public class PaginaBattaglia implements Pagina {
         schedaEroe.aggiorna();
         schedaMostro.aggiorna();
 
-        String nomeAbilita = avventuriero.getAbilita().getNome().toUpperCase(Locale.ROOT);
-        abilita.setText(battaglia.isAbilitaPronta()
-                ? nomeAbilita + "!"
-                : nomeAbilita + " (" + battaglia.getAttacchiMancanti() + ")");
-        abilita.setDisable(!battaglia.isAbilitaPronta());
-
+        bottoniAbilita.forEach((a, bottone) -> {
+            String nomeAbilita = a.getNome().toUpperCase(Locale.ROOT);
+            boolean pronta = battaglia.isAbilitaPronta(a);
+            bottone.setText(pronta ? nomeAbilita + "!" : nomeAbilita + " (" + battaglia.getAttacchiMancanti(a) + ")");
+            bottone.setDisable(!pronta);
+        });
         if (battaglia.isFinita()) {
             mostraContinua(true);
         }
@@ -150,7 +159,9 @@ public class PaginaBattaglia implements Pagina {
      * Mostra CONTINUA al posto dei bottoni di attacco, o il contrario.
      */
     private void mostraContinua(boolean mostra) {
-        for (Button bottone : new Button[]{attacca, abilita}) {
+        attacca.setVisible(!mostra);
+        attacca.setManaged(!mostra);
+        for (Button bottone : bottoniAbilita.values()) {
             bottone.setVisible(!mostra);
             bottone.setManaged(!mostra);
         }
