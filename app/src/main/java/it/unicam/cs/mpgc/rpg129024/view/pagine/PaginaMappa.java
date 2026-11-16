@@ -1,6 +1,10 @@
 package it.unicam.cs.mpgc.rpg129024.view.pagine;
 
-import it.unicam.cs.mpgc.rpg129024.model.gioco.*;
+import it.unicam.cs.mpgc.rpg129024.model.gioco.Direzione;
+import it.unicam.cs.mpgc.rpg129024.model.gioco.EsitoMovimento;
+import it.unicam.cs.mpgc.rpg129024.model.gioco.Mappa;
+import it.unicam.cs.mpgc.rpg129024.model.gioco.Partita;
+import it.unicam.cs.mpgc.rpg129024.model.gioco.TipoCasella;
 import it.unicam.cs.mpgc.rpg129024.model.personaggi.Avventuriero;
 import it.unicam.cs.mpgc.rpg129024.model.personaggi.Mostro;
 import it.unicam.cs.mpgc.rpg129024.view.Dialoghi;
@@ -16,7 +20,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
 import java.util.HashMap;
