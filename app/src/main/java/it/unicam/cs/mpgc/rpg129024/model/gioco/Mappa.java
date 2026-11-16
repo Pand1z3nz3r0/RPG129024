@@ -15,12 +15,18 @@ import it.unicam.cs.mpgc.rpg129024.model.personaggi.TipoMostro;
  */
 public class Mappa {
 
+    /** numero delle righe della mappa */
     public static final int RIGHE = 10;
+    /** numero delle colonne della mappa */
     public static final int COLONNE = 12;
 
+    /** riga di partenza dell'avventuriero */
     private static final int RIGA_PARTENZA = 9;
+    /** colonna di partenza dell'avventuriero */
     private static final int COLONNA_PARTENZA = 0;
+    /** riga della porta */
     private static final int RIGA_PORTA = 0;
+    /** colonna della porta */
     private static final int COLONNA_PORTA = 11;
 
     private final TipoCasella[][] caselle = new TipoCasella[RIGHE][COLONNE];
@@ -59,7 +65,14 @@ public class Mappa {
         rigaEroe = RIGA_PARTENZA;
         colonnaEroe = COLONNA_PARTENZA;
     }
-
+    /**
+     * Crea un nuovo mostro del tipo indicato e lo colloca alle coordinate specificate,
+     * incrementando il conteggio dei mostri rimasti nel dungeon.
+     *
+     * @param tipo    il tipo di mostro da creare
+     * @param riga    l'indice di riga in cui posizionare il mostro
+     * @param colonna l'indice di colonna in cui posizionare il mostro
+     */
     private void posiziona(TipoMostro tipo, int riga, int colonna) {
         mostri[riga][colonna] = tipo.creaMostro();
         mostriRimasti++;
@@ -134,8 +147,12 @@ public class Mappa {
     }
 
     /**
+     * Restituisce il tipo della casella alle coordinate indicate.
+     *
+     * @param riga    la riga della casella da verificare
+     * @param colonna la colonna della casella da verificare
      * @return il tipo della casella indicata
-     * @throws IllegalArgumentException se la casella è fuori dalla mappa
+     * @throws IllegalArgumentException se la casella è fuori dai limiti della mappa
      */
     public TipoCasella getCasella(int riga, int colonna) {
         controllaDentro(riga, colonna);
@@ -143,26 +160,54 @@ public class Mappa {
     }
 
     /**
-     * @return il mostro nella casella indicata, oppure {@code null}
-     * @throws IllegalArgumentException se la casella è fuori dalla mappa
+     * Restituisce il mostro presente alle coordinate indicate.
+     *
+     * @param riga    la riga della casella da esaminare
+     * @param colonna la colonna della casella da esaminare
+     * @return il mostro nella casella indicata, oppure {@code null} se non c'è nessun mostro
+     * @throws IllegalArgumentException se la casella è fuori dai limiti della mappa
      */
     public Mostro getMostro(int riga, int colonna) {
         controllaDentro(riga, colonna);
         return mostri[riga][colonna];
     }
 
+    /**
+     * Restituisce la riga della mappa in cui si trova attualmente l'avventuriero.
+     *
+     * @return l'indice di riga dell'avventuriero
+     */
     public int getRigaEroe() {
         return rigaEroe;
     }
 
+    /**
+     * Restituisce la colonna della mappa in cui si trova attualmente l'avventuriero.
+     *
+     * @return l'indice di colonna dell'avventuriero
+     */
     public int getColonnaEroe() {
         return colonnaEroe;
     }
 
+    /**
+     * Verifica se le coordinate specificate si trovano all'interno dei confini della mappa.
+     *
+     * @param riga    la riga da verificare
+     * @param colonna la colonna da verificare
+     * @return {@code true} se le coordinate rientrano nella griglia, {@code false} altrimenti
+     */
     private boolean isDentro(int riga, int colonna) {
         return riga >= 0 && riga < RIGHE && colonna >= 0 && colonna < COLONNE;
     }
 
+    /**
+     * Verifica che le coordinate indicate siano valide, sollevando un'eccezione se non lo sono.
+     *
+     * @param riga    la riga da controllare
+     * @param colonna la colonna da controllare
+     * @throws IllegalArgumentException se le coordinate si trovano fuori dalla mappa
+     */
     private void controllaDentro(int riga, int colonna) {
         if (!isDentro(riga, colonna)) {
             throw new IllegalArgumentException(

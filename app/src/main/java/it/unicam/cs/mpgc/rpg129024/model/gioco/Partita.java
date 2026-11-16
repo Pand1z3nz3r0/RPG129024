@@ -171,14 +171,23 @@ public class Partita {
         return esito;
     }
 
+    /**
+     * @return l'avventuriero che sta giocando
+     */
     public Avventuriero getAvventuriero() {
         return avventuriero;
     }
 
+    /**
+     * @return della mappa della partita
+     */
     public Mappa getMappa() {
         return mappa;
     }
 
+    /**
+     * @return il numero dei nemici sconfitti
+     */
     public int getNemiciSconfitti() {
         return nemiciSconfitti;
     }

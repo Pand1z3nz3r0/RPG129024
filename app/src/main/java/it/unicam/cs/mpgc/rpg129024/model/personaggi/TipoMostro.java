@@ -42,15 +42,16 @@ public enum TipoMostro {
         return nome;
     }
 
+
     /**
-     * @return i punti vita iniziali
+     * @return il valore di attacco iniziale
      */
     public int getAd() {
         return ad;
     }
 
     /**
-     * @return il valore di attacco iniziale
+     * @return i punti vita iniziali
      */
     public int getHp() {
         return hp;

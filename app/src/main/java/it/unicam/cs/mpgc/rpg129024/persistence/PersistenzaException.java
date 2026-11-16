@@ -10,6 +10,12 @@ package it.unicam.cs.mpgc.rpg129024.persistence;
  */
 public class PersistenzaException extends RuntimeException {
 
+    /**
+     * Costruisce una persistenza exception con un messaggio e una causa.
+     * 
+     * @param messaggio il messaggio di errore
+     * @param causa     la causa dell'errore
+     */
     public PersistenzaException(String messaggio, Throwable causa) {
         super(messaggio, causa);
     }
