@@ -32,8 +32,8 @@ che si nascondono nell'oscurità, diventa più forte a ogni vittoria e trova la 
 Requisiti: **Git** e **Java 25** (se Java 25 non è presente, Gradle lo scarica automaticamente).
 
 ```bash
-git clone https://github.com/Pand1z3nz3r0/RPG-129024.git
-cd RPG-129024
+git clone https://github.com/Pand1z3nz3r0/RPG129024.git
+cd RPG129024
 ./gradlew build
 ./gradlew run
 ```
