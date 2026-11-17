@@ -8,8 +8,6 @@ repositories {
 }
 
 dependencies {
-    testImplementation libs.junit.jupiter
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation libs.gson
 }
 
@@ -26,8 +24,4 @@ javafx {
 
 application {
     mainClass = 'it.unicam.cs.mpgc.rpg129024.Launcher'
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
 }
